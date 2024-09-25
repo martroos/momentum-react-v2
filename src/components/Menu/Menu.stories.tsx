@@ -12,7 +12,7 @@ import { action } from '@storybook/addon-actions';
 import Flex from '../Flex';
 import Avatar from '../Avatar';
 import { PresenceType } from '../Avatar/Avatar.types';
-import { ListHeader, ListItemBaseSection, Icon } from '..';
+import { ListHeader, ListItemBaseSection, Icon, ContentSeparator } from '..';
 import './Menu.stories.style.scss';
 
 export default {
@@ -82,39 +82,21 @@ Sections.parameters = {
       onSelectionChange: menuOnSelectionChange,
       onAction: menuOnAction,
       children: [
-        <Section
-          key="0"
-          title={
-            <ListHeader outline={false}>
-              <ListItemBaseSection position="fill">Europe</ListItemBaseSection>
-            </ListHeader>
-          }
-        >
+        <Section key="0" title="Europe">
           <Item key="00">Spain</Item>
           <Item key="01">France</Item>
           <Item key="02">Italy</Item>
         </Section>,
-        <Section
-          key="1"
-          title={
-            <ListHeader outline={true} outlinePosition="top" outlineColor="secondary">
-              <ListItemBaseSection position="fill">Asia</ListItemBaseSection>
-            </ListHeader>
-          }
-        >
+        <ContentSeparator key="separator-0" />,
+        <Section key="1" title="Asia">
           <Item key="10">India</Item>
           <Item key="11">China</Item>
           <Item key="12">Japan</Item>
         </Section>,
-        <Section
-          key="2"
-          title={
-            <ListHeader outline={true} outlinePosition="top" outlineColor="secondary">
-              <ListItemBaseSection position="fill">America</ListItemBaseSection>
-            </ListHeader>
-          }
-        >
+        <ContentSeparator key="separator-1" />,
+        <Section key="2" title="America">
           <Item key="13">USA</Item>
+          <ContentSeparator key="separator-20" />
           <Item key="14">Mexico</Item>
           <Item key="15">Canada</Item>
         </Section>,
@@ -170,6 +152,7 @@ SelectionGroups.parameters = {
           <Item key="03">MacBook Pro Speakers</Item>
           <Item key="04">Webex Media Audio Device</Item>
         </SelectionGroup>,
+        <ContentSeparator key="separator-0" />,
         <SelectionGroup
           key="1"
           selectionMode="single"
@@ -183,7 +166,7 @@ SelectionGroups.parameters = {
           }}
           title={
             <>
-              <ListHeader outline={true} outlinePosition="top" outlineColor="secondary">
+              <ListHeader>
                 <ListItemBaseSection position="start">
                   <Icon scale={16} name="microphone" strokeColor="none" />
                 </ListItemBaseSection>
@@ -197,9 +180,11 @@ SelectionGroups.parameters = {
           <Item key="10">No Microphone</Item>
           <Item key="11">Default - External Microhpone (Built-in)</Item>
           <Item key="12">Desk Pro Web Microphone</Item>
+          <ContentSeparator />
           <Item key="13">MacBook Pro Microphone</Item>
           <Item key="14">Webex Media Audio Device</Item>
         </SelectionGroup>,
+        <ContentSeparator key="separator-1" />,
         <SelectionGroup
           key="2"
           tickPosition="none"
@@ -219,7 +204,7 @@ SelectionGroups.parameters = {
           }}
           title={
             <>
-              <ListHeader outline={true} outlinePosition="top" outlineColor="secondary">
+              <ListHeader>
                 <ListItemBaseSection position="start">
                   <Icon scale={16} name="adjust-microphone" strokeColor="none" />
                 </ListItemBaseSection>

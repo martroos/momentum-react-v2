@@ -7,6 +7,7 @@ import { Props } from './MenuSection.types';
 import './MenuSection.style.scss';
 import MenuItem from '../MenuItem';
 import { useMenuSection } from '@react-aria/menu';
+import ContentSeparator from '../ContentSeparator';
 
 const MenuSection = <T extends object>(props: Props<T>): ReactElement => {
   const { item, state, onAction } = props;
@@ -17,9 +18,13 @@ const MenuSection = <T extends object>(props: Props<T>): ReactElement => {
   });
 
   const renderItems = useCallback(() => {
-    return Array.from(item.childNodes).map((node) => (
-      <MenuItem key={node.key} item={node} state={state} onAction={onAction} />
-    ));
+    return Array.from(item.childNodes).map((node) => {
+      if (node.props?._isSeparator) {
+        // Might be worth removing the _isSeparator prop since it doesn't really exist
+        return <ContentSeparator {...node.props} />;
+      }
+      return <MenuItem key={node.key} item={node} state={state} onAction={onAction} />;
+    });
   }, [state]);
 
   return (

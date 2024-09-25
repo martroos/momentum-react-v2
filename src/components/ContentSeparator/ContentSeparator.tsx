@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import React from 'react';
 import classnames from 'classnames';
 
@@ -22,6 +23,12 @@ const ContentSeparator: React.FC<Props> = (props: Props) => {
       {children}
     </li>
   );
+};
+
+// @ts-ignore
+ContentSeparator.getCollectionNode = function* getCollectionNode(props: any, ...rest: any[]) {
+  // Pretend the separator is another item in a menu, but give it a special _isSeparator prop to identify it
+  yield { type: 'item', props: { ...props, _isSeparator: true } };
 };
 
 /**
